@@ -1,3 +1,14 @@
+/*!
+ * Based on github-markdown-css v5.9.0 (github-markdown-dark.css)
+ * https://github.com/sindresorhus/github-markdown-css
+ * Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+ *
+ * Customized for VS Code / PhpStorm Markdown preview
+ * Copyright (c) 2026 Minoru Taguchi
+ *
+ * Released under the MIT License
+ */
+
 /*dark */
 body {
   color-scheme: dark;
@@ -1122,3 +1133,54 @@ body .highlight pre:has(+.zeroclipboard-container) {
   min-height: 52px;
 }
 
+
+/* ===== Customizations ===== */
+
+/* Page layout recommended by github-markdown-css */
+html body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto !important;
+  padding: 45px !important;
+}
+
+@media (max-width: 767px) {
+  html body {
+    padding: 15px !important;
+  }
+}
+
+/* Undo PhpStorm default.css rules that GitHub does not have */
+html body h1,
+html body h2,
+html body h3 {
+  padding-top: 0;
+}
+
+html body blockquote {
+  border-radius: 0;
+}
+
+/* Undo VS Code preview table borders so that GitHub's colors are used */
+html body table th,
+html body table td {
+  border: 1px solid #3d444d !important;
+}
+
+/* Undo VS Code preview border colors on headings and horizontal rules */
+html body h1,
+html body h2,
+html body hr {
+  border-bottom-color: #3d444db3 !important;
+}
+
+/* Undo the border VS Code preview adds to code blocks */
+html body pre {
+  border: 0;
+}
+
+/* Undo VS Code scrollbar colors, whose track uses the editor background */
+html {
+  scrollbar-color: #3d444d transparent;
+}
