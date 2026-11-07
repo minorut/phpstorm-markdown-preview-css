@@ -32,7 +32,7 @@ OS やエディタのテーマで自動的に切り替わることはありま�
 > [!NOTE]
 > 作者は PhpStorm ユーザーのため、VS Code での表示は簡単な確認にとどめています。崩れている箇所があれば Issue などで教えてください。
 
-`settings.json` の `markdown.styles` に CSS のパスか URL を指定します。
+`settings.json` の `markdown.styles` に CSS のパスか URL を指定します。パスで指定する場合は、開いているワークスペースの中にあるファイルを指定してください（ワークスペースの外にあるファイルは読み込まれません）。
 
 ```json
 {

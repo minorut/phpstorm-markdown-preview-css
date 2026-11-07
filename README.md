@@ -32,7 +32,7 @@ The theme does not switch automatically with the OS or editor theme. Specify the
 > [!NOTE]
 > The author uses PhpStorm, so the VS Code preview has only been checked briefly. If something looks broken, please let me know via an issue.
 
-Specify the path or URL of the CSS in `markdown.styles` in `settings.json`.
+Specify the path or URL of the CSS in `markdown.styles` in `settings.json`. If you specify a path, the file must be inside the open workspace (files outside the workspace are not loaded).
 
 ```json
 {
