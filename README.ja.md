@@ -17,15 +17,15 @@ OS やエディタのテーマで自動的に切り替わることはありま�
 
 ### PhpStorm
 
-1. Settings（macOS では Settings / Preferences）を開く
-2. **Languages & Frameworks → Markdown** を開く
-3. **Custom CSS** の **Load from** にチェックを入れ、`github-markdown-light.css`（または `github-markdown-dark.css`）のパスか URL を指定する
+1. `github-markdown-light.css`（または `github-markdown-dark.css`）を、プレビューを使うプロジェクトの中にダウンロードする（プロジェクトの外にあるファイルは読み込まれません）
 
-URL で指定する場合の例:
+   ```sh
+   curl -LO https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
+   ```
 
-```
-https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
-```
+2. Settings（macOS では Settings / Preferences）を開く
+3. **Languages & Frameworks → Markdown** を開く
+4. **Custom CSS** の **Load from** にチェックを入れ、ダウンロードしたファイルのパスを指定する
 
 ### VS Code
 
@@ -37,7 +37,7 @@ https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/git
 ```json
 {
   "markdown.styles": [
-    "https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css"
+    "https://cdn.jsdelivr.net/gh/minorut/phpstorm-markdown-preview-css@main/github-markdown-light.css"
   ]
 }
 ```

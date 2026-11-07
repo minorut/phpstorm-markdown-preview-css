@@ -17,15 +17,15 @@ The theme does not switch automatically with the OS or editor theme. Specify the
 
 ### PhpStorm
 
-1. Open Settings (Settings / Preferences on macOS)
-2. Go to **Languages & Frameworks → Markdown**
-3. Under **Custom CSS**, check **Load from** and specify the path or URL of `github-markdown-light.css` (or `github-markdown-dark.css`)
+1. Download `github-markdown-light.css` (or `github-markdown-dark.css`) into the project where you use the preview (files outside the project are not loaded)
 
-Example URL:
+   ```sh
+   curl -LO https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
+   ```
 
-```
-https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
-```
+2. Open Settings (Settings / Preferences on macOS)
+3. Go to **Languages & Frameworks → Markdown**
+4. Under **Custom CSS**, check **Load from** and specify the path of the downloaded file
 
 ### VS Code
 
@@ -37,7 +37,7 @@ Specify the path or URL of the CSS in `markdown.styles` in `settings.json`.
 ```json
 {
   "markdown.styles": [
-    "https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css"
+    "https://cdn.jsdelivr.net/gh/minorut/phpstorm-markdown-preview-css@main/github-markdown-light.css"
   ]
 }
 ```
