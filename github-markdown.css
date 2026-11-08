@@ -1,3 +1,14 @@
+/*!
+ * Based on github-markdown-css v5.9.0 (github-markdown.css)
+ * https://github.com/sindresorhus/github-markdown-css
+ * Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+ *
+ * Customized for VS Code / PhpStorm Markdown preview
+ * Copyright (c) 2026 Minoru Taguchi
+ *
+ * Released under the MIT License
+ */
+
 body {
   --base-size-16: 1rem;
   --base-size-24: 1.5rem;
@@ -1246,3 +1257,115 @@ body .highlight pre:has(+.zeroclipboard-container) {
   min-height: 52px;
 }
 
+
+/* ===== Customizations ===== */
+
+/* Page layout recommended by github-markdown-css */
+html body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto !important;
+  padding: 45px !important;
+}
+
+@media (max-width: 767px) {
+  html body {
+    padding: 15px !important;
+  }
+}
+
+/* Undo PhpStorm default.css rules that GitHub does not have */
+html body h1,
+html body h2,
+html body h3 {
+  padding-top: 0;
+}
+
+html body blockquote {
+  border-radius: 0;
+}
+
+/* Undo the border VS Code preview adds to code blocks */
+html body pre {
+  border: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  /* Force light colors over the colors the editor theme applies to the preview */
+  html,
+  html body {
+    background-color: #ffffff !important;
+    color: #1f2328 !important;
+  }
+
+  html body pre,
+  html body pre code,
+  html body code {
+    color: #1f2328 !important;
+  }
+
+  html body p:not(.markdown-alert-title),
+  html body li,
+  html body td,
+  html body th,
+  html body dt,
+  html body dd,
+  html body strong,
+  html body b,
+  html body em,
+  html body i {
+    color: #1f2328 !important;
+  }
+
+  html body blockquote,
+  html body blockquote p,
+  html body blockquote li,
+  html body blockquote strong,
+  html body blockquote em {
+    color: #59636e !important;
+  }
+
+  /* Undo PhpStorm default.css link color */
+  html body a {
+    color: #0969da !important;
+  }
+
+  /* Undo VS Code preview table borders so that GitHub's colors are used */
+  html body table th,
+  html body table td {
+    border: 1px solid #d1d9e0 !important;
+  }
+
+  /* Undo VS Code preview border colors on headings and horizontal rules */
+  html body h1,
+  html body h2,
+  html body hr {
+    border-bottom-color: #d1d9e0b3 !important;
+  }
+
+  /* Undo VS Code scrollbar colors, whose track uses the editor background */
+  html {
+    scrollbar-color: #d1d9e0 transparent;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Undo VS Code preview table borders so that GitHub's colors are used */
+  html body table th,
+  html body table td {
+    border: 1px solid #3d444d !important;
+  }
+
+  /* Undo VS Code preview border colors on headings and horizontal rules */
+  html body h1,
+  html body h2,
+  html body hr {
+    border-bottom-color: #3d444db3 !important;
+  }
+
+  /* Undo VS Code scrollbar colors, whose track uses the editor background */
+  html {
+    scrollbar-color: #3d444d transparent;
+  }
+}
