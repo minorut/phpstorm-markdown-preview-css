@@ -4,20 +4,21 @@
 
 PhpStorm の Markdown プレビューを GitHub 風の見た目にするための CSS です。VS Code のプレビューでも使えます。
 
-[sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css) v5.9.0 のライト版とダーク版を元にしています。
+[sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css) v5.9.0 を元にしています。
 
 | ファイル | テーマ |
 |---|---|
+| `github-markdown.css` | 自動切り替え（`prefers-color-scheme`） |
 | `github-markdown-dark.css` | ダーク |
 | `github-markdown-light.css` | ライト |
 
-OS やエディタのテーマで自動的に切り替わることはありません。使いたい方のファイルを指定してください。
+`github-markdown.css` は OS のライト／ダーク設定に合わせて切り替わります（`prefers-color-scheme`）。エディタのテーマには連動しません。テーマを固定したい場合は `github-markdown-light.css` か `github-markdown-dark.css` を指定してください。
 
 ## 使い方
 
 ### PhpStorm
 
-1. `github-markdown-light.css`（または `github-markdown-dark.css`）を、プレビューを使うプロジェクトの中にダウンロードする（プロジェクトの外にあるファイルは読み込まれません）
+1. 使いたい CSS ファイル（例: `github-markdown-light.css`）を、プレビューを使うプロジェクトの中にダウンロードする（プロジェクトの外にあるファイルは読み込まれません）
 
    ```sh
    curl -LO https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
@@ -66,6 +67,8 @@ OS やエディタのテーマで自動的に切り替わることはありま�
 - コードブロックに付く枠線を打ち消す
 - エディタの背景色を使うスクロールバーの色を打ち消す
 
+`github-markdown.css` には、ライト版とダーク版の上書きを `prefers-color-scheme` で切り替えて入れています。「ライトのみ」の上書きは、ライト表示のときだけ効きます。
+
 ## カスタマイズ
 
 各ファイル末尾の `/* ===== Customizations ===== */` より下に、自分のスタイルを書いてください。元の部分は書き換えないでおくと、上流の更新を取り込みやすくなります。
@@ -75,9 +78,9 @@ OS やエディタのテーマで自動的に切り替わることはありま�
 1. 最新の CSS を取得し、`.markdown-body` を `body` に置き換える
 
    ```sh
-   for t in light dark; do
-     curl -sL "https://unpkg.com/github-markdown-css/github-markdown-$t.css" \
-       | sed 's/\.markdown-body/body/g' > "/tmp/upstream-$t.css"
+   for f in github-markdown github-markdown-light github-markdown-dark; do
+     curl -sL "https://unpkg.com/github-markdown-css/$f.css" \
+       | sed 's/\.markdown-body/body/g' > "/tmp/upstream-$f.css"
    done
    ```
 

@@ -4,20 +4,21 @@ English | [日本語](README.ja.md)
 
 CSS that gives the PhpStorm Markdown preview a GitHub-style look. It also works with the VS Code preview.
 
-Based on the light and dark versions of [sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css) v5.9.0.
+Based on [sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css) v5.9.0.
 
 | File | Theme |
 |---|---|
+| `github-markdown.css` | Automatic (`prefers-color-scheme`) |
 | `github-markdown-dark.css` | Dark |
 | `github-markdown-light.css` | Light |
 
-The theme does not switch automatically with the OS or editor theme. Specify the file you want to use.
+`github-markdown.css` switches between light and dark according to the OS appearance setting (`prefers-color-scheme`). It does not follow the editor theme. To use a fixed theme, specify `github-markdown-light.css` or `github-markdown-dark.css`.
 
 ## Usage
 
 ### PhpStorm
 
-1. Download `github-markdown-light.css` (or `github-markdown-dark.css`) into the project where you use the preview (files outside the project are not loaded)
+1. Download the CSS file you want to use (e.g. `github-markdown-light.css`) into the project where you use the preview (files outside the project are not loaded)
 
    ```sh
    curl -LO https://raw.githubusercontent.com/minorut/phpstorm-markdown-preview-css/main/github-markdown-light.css
@@ -66,6 +67,8 @@ On top of that, the `Customizations` section at the end of each file adds the fo
 - Undo the border added to code blocks
 - Undo scrollbar colors that use the editor background
 
+`github-markdown.css` includes the overrides of both the light and dark versions, switched with `prefers-color-scheme`. The "light only" overrides apply only when the light theme is shown.
+
 ## Customizing
 
 Add your own styles below `/* ===== Customizations ===== */` at the end of each file. Leaving the original part untouched makes it easier to pull in upstream updates.
@@ -75,9 +78,9 @@ Add your own styles below `/* ===== Customizations ===== */` at the end of each 
 1. Download the latest CSS and replace `.markdown-body` with `body`
 
    ```sh
-   for t in light dark; do
-     curl -sL "https://unpkg.com/github-markdown-css/github-markdown-$t.css" \
-       | sed 's/\.markdown-body/body/g' > "/tmp/upstream-$t.css"
+   for f in github-markdown github-markdown-light github-markdown-dark; do
+     curl -sL "https://unpkg.com/github-markdown-css/$f.css" \
+       | sed 's/\.markdown-body/body/g' > "/tmp/upstream-$f.css"
    done
    ```
 
